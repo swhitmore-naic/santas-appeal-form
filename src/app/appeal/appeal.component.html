@@ -1,0 +1,107 @@
+<form [formGroup]="appealForm" novalidate>
+
+  <div class="row">
+    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+      <label for="name">Name</label>
+      <div id="name" class="flex">
+        <input type="text"
+               id="first-name"
+               class="form-control"
+               placeholder="First"
+               formControlName="firstName"
+               required />
+        <input type="text"
+               id="last-name"
+               class="form-control margin-left-15"
+               placeholder="Last"
+               formControlName="lastName"
+               required />
+      </div>
+    </div>
+    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+      <label for="addressForm">Address</label>
+      <form id="addressForm" class="flex" [formGroup]="addressForm" novalidate>
+        <input type="text"
+               id="street-1"
+               class="form-control"
+               placeholder="Street 1"
+               formControlName="street1"
+               required />
+        <input type="text"
+               id="street-2"
+               class="form-control"
+               placeholder="Street 2 (not required)"
+               formControlName="street2"
+               required />
+        <div id="city-state-zip" class="flex">
+          <input type="text"
+                 id="city"
+                 class="form-control"
+                 placeholder="City"
+                 formControlName="city"
+                 required />
+          <input type="text"
+                 id="state"
+                 class="form-control"
+                 placeholder="State"
+                 formControlName="state"
+                 required />
+          <input type="number"
+                 id="zip"
+                 class="form-control"
+                 placeholder="ZIP"
+                 formControlName="zip"
+                 required />
+        </div>
+      </form>
+    </div>
+  </div> <!-- END row -->
+
+  <hr>
+
+  <div class="row">
+    <div class="form-group col-lg-4 col-md-4 col-sm-12">
+      <label for="age-range">Age Range</label>
+      <select id="age-range"
+              class="form-control"
+              formControlName="ageRange"
+              required>
+        <option *ngFor="let ar of (ageRanges$ | async)" [value]="ar">{{ar}}</option>
+      </select>
+      <label for="naughty-or-nice">Were you naughty or nice?<br><span>(Be honest. He'll know...)</span></label>
+      <select id="naughty-or-nice"
+              class="form-control"
+              formControlName="naughtyOrNice"
+              required>
+        <option *ngFor="let n of (niceness$ | async)" [value]="n">{{n}}</option>
+      </select>
+      <label for="left-cookies">Did you leave cookies and milk for Santa?</label>
+      <select id="left-cookies"
+              class="form-control"
+              formControlName="leftCookies"
+              required>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+    </div>
+    <div class="form-group col-lg-8 col-md-8 col-sm-12">
+      <label for="wish-list">This Christmas I would like:</label>
+      <textarea id="wish-list"
+                #textarea
+                class="form-control"
+                rows="8"
+                [maxlength]="wishListMaxLength"
+                placeholder="Scarf, teddy bear, puppy, fighter jet..."
+                formControlName="wishList"
+                required>
+        </textarea>
+        <div id="wish-list-maxlength-count" *ngIf="wishListMaxLength > 0">{{wishListMaxLength - textarea.value.length}} characters remaining.</div>
+    </div>
+  </div> <!-- END row -->
+
+  <div id="form-buttons" class="row">
+    <button type="button" class="btn btn-success" (click)="sendLetter()" [disabled]="!appealForm.valid || !addressForm.valid">Submit</button>
+    <button type="button" class="btn btn-default margin-left-15" (click)="resetForm()">Reset</button>
+  </div>
+
+</form>

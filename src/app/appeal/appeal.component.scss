@@ -1,0 +1,65 @@
+.margin-left-15 {
+  margin-left: 15px;
+}
+
+.flex {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+hr {
+  margin-top: 0;
+  border-top: 1px solid rgba(92, 184, 92, 0.5);
+}
+
+form {
+
+  label {
+    font-weight: 600;
+    line-height: 1rem;
+    span {
+      font-size: 0.75rem;
+    }
+  }
+
+  .form-control {
+    margin-bottom: 0.5rem;
+    &:focus {
+      border-color: #5CB85C;
+      box-shadow: 0 0 0 0.2rem rgba(92, 184, 92,.25);
+    }
+  }
+
+  #name {
+    input {
+      flex: 1 0 0;
+    }
+  }
+
+  #city-state-zip {
+    flex-wrap: nowrap;
+    input#city {
+      flex: 6;
+    }
+    input#state {
+      margin: 0 0.5rem;
+      flex: 1;
+    }
+    input#zip {
+      flex: 3;
+    }
+  }
+
+  textarea.form-control {
+    resize: none;
+    margin-bottom: 0;
+  }
+
+  #form-buttons {
+    padding: 0 15px;
+    button:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+}
