@@ -1,0 +1,31 @@
+image: node:latest
+
+variables:
+  APP_NAME: "santas-appeal-form-web"
+
+
+before_script:
+- npm install
+
+cache:
+  paths:
+  - node_modules/
+
+stages:
+- build
+- test
+- deploy
+
+build:
+  stage: build
+  allow_failure: false
+  script:
+  - npm run build:aot
+  tags:
+    - docker
+
+lint_app:
+  stage: build_and_test
+  allow_failure: false
+  script:
+  - npm run lint
