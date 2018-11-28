@@ -13,6 +13,7 @@ cache:
 
 stages:
 - build
+- lint
 - test
 - deploy
 
@@ -24,8 +25,14 @@ build:
   tags:
     - docker
 
-lint_app:
-  stage: test
+lint:
+  stage: lint
   allow_failure: false
   script:
   - npm run lint
+
+test:
+  stage: test
+  allow_failure: true
+  script:
+  - npm run test

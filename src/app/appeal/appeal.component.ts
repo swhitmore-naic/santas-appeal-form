@@ -32,7 +32,7 @@ export class AppealComponent implements OnInit {
 
   buildForms() {
     this.initAppealForm();
-    this.initAddressForm()
+    this.initAddressForm();
   }
 
   initAppealForm() {
