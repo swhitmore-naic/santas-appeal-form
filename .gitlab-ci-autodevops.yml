@@ -56,6 +56,11 @@ variables:
 
   #Undefine FAST_RUN or set to empty to re-enable
   DAST_DISABLED: "true"
+  CODE_QUALITY_DISABLED: "true"
+  TEST_DISABLED: "true"
+  SAST_DISABLED: "true"
+  DEPENDENCY_SCANNING_DISABLED: "true"
+  LICENSE_MANAGEMENT_DISABLED: "true"
 
   STAGING_ENABLED: "true"
 
