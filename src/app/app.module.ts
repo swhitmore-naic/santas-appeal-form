@@ -1,9 +1,14 @@
+// Core Libraries
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NotifierModule } from 'angular-notifier';
 
+// Third Party
+import { NotifierModule } from 'angular-notifier';
+import { TextMaskModule } from 'angular2-text-mask';
+
+// Ours
 import { AppComponent } from './app.component';
 import { AppealComponent } from './appeal/appeal.component';
 
@@ -12,7 +17,8 @@ import { AppealComponent } from './appeal/appeal.component';
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NotifierModule
+    NotifierModule,
+    TextMaskModule
   ],
   declarations: [
     AppComponent,

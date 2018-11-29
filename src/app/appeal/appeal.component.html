@@ -45,11 +45,12 @@
                  placeholder="State"
                  formControlName="state"
                  required />
-          <input type="number"
+          <input type="text"
                  id="zip"
                  class="form-control"
                  placeholder="ZIP"
                  formControlName="zip"
+                 [textMask]="{mask: zipcodeMask}"
                  required />
         </div>
       </form>
@@ -100,7 +101,7 @@
 
   <div id="form-buttons" class="row">
     <button type="button" class="btn btn-success" (click)="sendLetter()" [disabled]="!appealForm.valid || !addressForm.valid">Submit</button>
-    <button type="button" class="btn btn-default margin-left-15" (click)="resetForm()">Reset</button>
+    <button type="button" class="btn btn-default margin-left-15" (click)="resetForms()">Reset</button>
   </div>
 
 </form>

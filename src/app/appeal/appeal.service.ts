@@ -28,6 +28,7 @@ export class AppealService {
   }
 
   submitForm(appealForm: AppealFormModel) {
+    console.log(appealForm);
     const foo = { message: 'foopa!' };
     return of(foo);
   }

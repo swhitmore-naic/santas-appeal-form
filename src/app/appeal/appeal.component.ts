@@ -18,6 +18,7 @@ export class AppealComponent implements OnInit {
   ageRanges$: Observable<any>;
   niceness$: Observable<any>;
   wishListMaxLength = 500;
+  zipcodeMask = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
 
   constructor(private fb: FormBuilder,
               private appealService: AppealService,
@@ -53,7 +54,7 @@ export class AppealComponent implements OnInit {
       street2: '',
       city: ['', Validators.required],
       state: ['', Validators.required],
-      zip: ['', Validators.required],
+      zip: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
 
@@ -64,17 +65,16 @@ export class AppealComponent implements OnInit {
   }
 
   sendLetter() {
-    console.log(this.appealForm.value);
-    console.log(this.addressForm.value);
     const submittedForm = new AppealFormModel(this.appealForm.value, this.addressForm.value);
     this.appealService.submitForm(submittedForm).subscribe(response => {
       this.notifierService.notify('success', 'Your request has been sent to Santa!');
     }, response => {
-      this.notifierService.notify('error', 'There was a problem: ' + response.message);
+      this.notifierService.notify('error', 'There was a problem: ' + response.message);      
     });
+    this.resetForms();
   }
 
-  resetForm() {
+  resetForms() {
     this.appealForm.reset();
     this.addressForm.reset();
     this.setDefaultValues();
