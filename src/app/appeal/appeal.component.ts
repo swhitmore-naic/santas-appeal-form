@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AppealFormModel} from './appeal.model';
 import {AppealService} from './appeal.service';
 import {Observable} from 'rxjs';
-import { NotifierService } from 'angular-notifier';
+import {NotifierService} from 'angular-notifier';
 
 
 
@@ -18,7 +18,8 @@ export class AppealComponent implements OnInit {
   ageRanges$: Observable<any>;
   niceness$: Observable<any>;
   wishListMaxLength = 500;
-  zipcodeMask = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+  zipcodeMask = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  @Output() formSubmissionEvent: EventEmitter<any> = new EventEmitter();
 
   constructor(private fb: FormBuilder,
               private appealService: AppealService,
@@ -66,11 +67,12 @@ export class AppealComponent implements OnInit {
 
   sendLetter() {
     const submittedForm = new AppealFormModel(this.appealForm.value, this.addressForm.value);
-    this.appealService.submitForm(submittedForm).subscribe(response => {
-      this.notifierService.notify('success', 'Your request has been sent to Santa!');
-    }, response => {
-      this.notifierService.notify('error', 'There was a problem: ' + response.message);      
-    });
+
+    // this.appealService.submitForm(submittedForm).subscribe(response => {
+    //   this.notifierService.notify('success', 'Your request has been sent to Santa!');
+    // }, response => {
+    //   this.notifierService.notify('error', 'There was a problem: ' + response.message);      
+    // });
     this.resetForms();
   }
 

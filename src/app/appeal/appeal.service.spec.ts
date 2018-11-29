@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { AppealService } from './appeal.service';
+import {AppealService} from './appeal.service';
 
 describe('AppealService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
