@@ -67,3 +67,17 @@ form {
   }
 
 }
+
+/* IE10+ styling */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  #name {
+    input {
+      width: 48%;
+    }
+  }
+  #city-state-zip {
+    > input {
+     flex: inherit;
+    }
+  }
+}

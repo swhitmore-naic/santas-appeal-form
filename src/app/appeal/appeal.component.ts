@@ -66,9 +66,13 @@ export class AppealComponent implements OnInit {
   }
 
   sendLetter() {
-    const submittedForm = new AppealFormModel(this.appealForm.value, this.addressForm.value);
-    this.formSubmissionEvent.emit(submittedForm);
-    this.resetForms();
+    this.notifierService.notify('default', 'Submitting...');
+    setTimeout(() => {
+      this.notifierService.notify('success', 'Form submitted to Santa!');
+      const submittedForm = new AppealFormModel(this.appealForm.value, this.addressForm.value);
+      this.formSubmissionEvent.emit(submittedForm);
+      this.resetForms();
+    }, 2000)
   }
 
   cancelSubmission() {

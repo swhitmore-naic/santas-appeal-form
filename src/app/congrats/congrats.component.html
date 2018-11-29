@@ -1,7 +1,7 @@
 <h1>Congratulations {{formContent.firstName}}!</h1>
-<p>We have it on good authority that Santa will be delivering {{formContent.wishList}} to</p>
+<p>We have it on good authority that Santa will be delivering "{{formContent.wishList}}" to</p>
 <ul>
-  <li>{{formContent.lastName}} Residence</li>
+  <li>The <strong>{{formContent.lastName}} Residence</strong></li>
   <li>{{formContent.address.street1}}</li>
   <li *ngIf="formContent.address.street2">{{formContent.address.street2}}</li>
   <li>{{formContent.address.city}}, {{formContent.address.state}}, {{formContent.address.zip}}</li>
@@ -13,7 +13,7 @@
 <ng-template #niceResponse><p>You claimed you were <strong>{{formContent.naughtyOrNice}}</strong> and while we all know better we'll still give you a pass.</p></ng-template>
 
 <div *ngIf="formContent.leftCookies; else leftNoCookies">
-  <p>You left Santa cookies and milk. That's pretty great of you.</p>
+  <p>You left Santa cookies and milk. That was pretty great of you.</p>
 </div>
 <ng-template #leftNoCookies><p><strong>You didn't leave any cookies or milk</strong> but luckily Santa was full.</p></ng-template>
 

@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AppealFormModel } from '../appeal/appeal.model';
-
 
 @Component({
   selector: 'bh-congrats',
@@ -22,7 +20,7 @@ export class CongratsComponent implements OnInit {
   cleanZipCode(zip) {
     const zipParts = zip.split('');
     const zipPartsCleansed = zipParts.filter(z => z !== '_');
-    console.log(zipPartsCleansed.length);
+
     if (zipPartsCleansed.length < 7) {
       zipPartsCleansed.pop();
     }    

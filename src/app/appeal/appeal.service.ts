@@ -7,6 +7,7 @@ import {AppealFormModel} from './appeal.model';
   providedIn: 'root'
 })
 export class AppealService {
+  private lookupUrl = '/api';
   private ageRanges;
   private naughtyOrNice;
   private leftCookies;
