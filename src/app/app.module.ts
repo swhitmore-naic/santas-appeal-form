@@ -11,6 +11,7 @@ import {TextMaskModule} from 'angular2-text-mask';
 // Ours
 import {AppComponent} from './app.component';
 import {AppealComponent} from './appeal/appeal.component';
+import { CongratsComponent } from './congrats/congrats.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import {AppealComponent} from './appeal/appeal.component';
   ],
   declarations: [
     AppComponent,
-    AppealComponent
+    AppealComponent,
+    CongratsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

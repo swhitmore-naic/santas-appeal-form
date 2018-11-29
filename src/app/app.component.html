@@ -1,5 +1,8 @@
 <div class="container">
   <img src="{{bannerImg}}"/>
-  <app-appeal></app-appeal>
+  <bh-appeal *ngIf="!showCongratsPage" (formSubmissionEvent)="pushSubmittedFormContent($event)"></bh-appeal>
+  <bh-congrats *ngIf="showCongratsPage" 
+               [formContent]="formContent"
+               (goBackEvent)="toggleCongratsPage()"></bh-congrats>
   <notifier-container></notifier-container>
 </div>

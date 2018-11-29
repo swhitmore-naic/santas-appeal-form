@@ -8,7 +8,7 @@ import {NotifierService} from 'angular-notifier';
 
 
 @Component({
-  selector: 'app-appeal',
+  selector: 'bh-appeal',
   templateUrl: './appeal.component.html',
   styleUrls: ['./appeal.component.scss']
 })
@@ -19,7 +19,7 @@ export class AppealComponent implements OnInit {
   niceness$: Observable<any>;
   wishListMaxLength = 500;
   zipcodeMask = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  @Output() formSubmissionEvent: EventEmitter<any> = new EventEmitter();
+  @Output() formSubmissionEvent: EventEmitter<AppealFormModel> = new EventEmitter();
 
   constructor(private fb: FormBuilder,
               private appealService: AppealService,
@@ -67,20 +67,19 @@ export class AppealComponent implements OnInit {
 
   sendLetter() {
     const submittedForm = new AppealFormModel(this.appealForm.value, this.addressForm.value);
+    this.formSubmissionEvent.emit(submittedForm);
+    this.resetForms();
+  }
 
-    // this.appealService.submitForm(submittedForm).subscribe(response => {
-    //   this.notifierService.notify('success', 'Your request has been sent to Santa!');
-    // }, response => {
-    //   this.notifierService.notify('error', 'There was a problem: ' + response.message);      
-    // });
+  cancelSubmission() {
+    this.notifierService.notify('default', 'The form has been reset');
     this.resetForms();
   }
 
   resetForms() {
     this.appealForm.reset();
     this.addressForm.reset();
-    this.setDefaultValues();
-    this.notifierService.notify('default', 'The form has been reset');
+    this.setDefaultValues();    
   }
 
 }

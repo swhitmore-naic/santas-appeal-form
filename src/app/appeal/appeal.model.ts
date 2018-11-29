@@ -4,7 +4,7 @@ export class AppealFormModel {
   address: AddressModel;
   ageRange: string;
   wishList: string;
-  naughtyOrNice: boolean;
+  naughtyOrNice: string;
   leftCookies: boolean;
 
   constructor(appealFormValue: AppealFormModel, addressFormValue: AddressModel) {
